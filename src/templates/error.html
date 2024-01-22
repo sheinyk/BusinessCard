@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #eee;
+            color: #333;
+            margin: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+ {% if firstName %}
+ <h1>תודה רבה {{ firstName }} נחזור אלייך בהקדם</h1>
+ {% else %}
+
+     <h1>תודה רבה {{ firstName }} נחזור אלייך בהקדם</h1>
+{% endif %}
+
+</body>
+</html>
