@@ -4,8 +4,8 @@ from flask_wtf import FlaskForm
 from src.app import app
 import os
 from flask import Flask, render_template, request, redirect, url_for
-from wtforms import StringField, SubmitField
-
+from wtforms.fields.simple import StringField, SubmitField
+from werkzeug.urls import url_encode as original_url_encode
 
 app.config['SECRET_KEY'] = '6yamim1967'
 

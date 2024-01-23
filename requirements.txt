@@ -1,5 +1,7 @@
-Flask==2.3.3
-Werkzeug>=2.3.7
-Flask-SQLAlchemy==3.0.0
-WTForms~=2.3.3
-SQLAlchemy==1.4.25
+Flask
+Werkzeug
+Flask-SQLAlchemy
+WTForms
+SQLAlchemy
+Flask-WTF
+pymysql
