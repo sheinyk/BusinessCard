@@ -1,0 +1,13 @@
+CREATE DATABASE IF NOT EXISTS dbcard; USE dbcard; \
+  CREATE TABLE IF NOT EXISTS card ( \
+    id INT NOT NULL AUTO_INCREMENT, \
+    firstName VARCHAR(20) NOT NULL, \
+    lastName VARCHAR(20) DEFAULT NULL, \
+    phoneNumber VARCHAR(20) NOT NULL, \
+    email VARCHAR(50) DEFAULT NULL, \
+    message VARCHAR(500) DEFAULT NULL, \
+    PRIMARY KEY (id) \
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+SHOW TABLES;

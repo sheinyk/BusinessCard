@@ -1,7 +1,8 @@
 Flask
-Werkzeug
-Flask-SQLAlchemy
-WTForms
-SQLAlchemy
 Flask-WTF
-pymysql
+Jinja2
+mysql-connector
+mysql-connector-python
+mysqlclient
+PyMySQL
+WTForms
