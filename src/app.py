@@ -15,7 +15,8 @@ db = mysql.connector.connect(
 cursor = db.cursor()
 
 cursor.execute("CREATE TABLE IF NOT EXISTS card (id INT AUTO_INCREMENT PRIMARY KEY, "
-               "firstName VARCHAR(20) NOT NULL, lastName VARCHAR(20), phoneNumber VARCHAR(20) NOT NULL, "
+               "firstName VARCHAR(20) NOT NULL, "
+               "lastName VARCHAR(20), phoneNumber VARCHAR(20) NOT NULL, "
                "email VARCHAR(50), message VARCHAR(500))")
 db.commit()
 
@@ -34,11 +35,11 @@ def index():
     if request.method == 'POST':
         try:
             # Extract form data
-            firstName = request.form.get('firstName', '')
-            lastName = request.form.get('lastName', '')
+            firstName = request.form.get('firstName', ' ')
+            lastName = request.form.get('lastName', ' ')
             phoneNumber = request.form['phoneNumber']
-            email = request.form.get('email', '')
-            message = request.form.get('message', '')
+            email = request.form.get('email', ' ')
+            message = request.form.get('message', ' ')
 
             # Insert data into the Card table
             insert_query = "INSERT INTO card (firstName, lastName, phoneNumber, email, message) " \
@@ -47,7 +48,8 @@ def index():
             db.commit()
 
             return redirect(url_for('success'))  # Redirect to a success route
-        except Exception as e:
+        except Exception:
+            firstName = request.form.get('firstName', '')
 
             return render_template('error.html', firstName=firstName)
     else:
@@ -55,5 +57,3 @@ def index():
         your_form = YourForm()
 
         return render_template('BCard.html', form=your_form)
-
-
