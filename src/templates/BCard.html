@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -62,6 +63,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <header>
@@ -71,29 +73,26 @@
     <main>
         <form method="post">
             {{ form.hidden_tag() }}
-            {{ form.name.lable }}
-            {{ form.name() }}
-            <br>
-            {{ form.submit() }}
 
             <label for="firstName">:שם פרטי</label>
-            <input type="text" id="firstName" name="firstName" required>
+            {{ form.firstName() }}
 
             <label for="lastName">:שם משפחה</label>
-            <input type="text" id="lastName" name="lastName" required>
+            {{ form.lastName() }}
 
             <label for="phoneNumber">:מספר טלפון</label>
-            <input type="tel" id="phoneNumber" name="phoneNumber" required>
+            {{ form.phoneNumber() }}
 
             <label for="email">:כתובת מייל</label>
-            <input type="email" id="email" name="email" required>
+            {{ form.email() }}
 
             <label for="message">:מוזמנים לשאול או לכתוב לנו</label>
-            <textarea id="message" name="message" rows="4" required></textarea>
+            {{ form.message() }}
 
             <button type="submit">Submit</button>
         </form>
     </main>
 
 </body>
+
 </html>

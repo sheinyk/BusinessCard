@@ -1,4 +1,3 @@
-FROM ubuntu:latest
-LABEL authors="ASUS"
-
-ENTRYPOINT ["top", "-b"]
+FROM mysql
+ENV MYSQL_ROOT_PASSWORD='6yamim1967'
+COPY ./data.sql /docker-entrypoint-initdb.d/
