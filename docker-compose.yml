@@ -4,7 +4,9 @@ services:
     image: flask_app
     container_name: flask_app
     restart: unless-stopped
-    build: ./src/
+    build:
+      context: .
+      dockerfile: app/Dockerfile
     environment:
       DB_PASSWORD: 6yamim1967
       DB_USERNAME: root
@@ -23,4 +25,4 @@ services:
       MYSQL_HOST: 'mysql'
 
     ports:
-      - "3307:3306"
+      - "3306:3306"
