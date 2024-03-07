@@ -33,8 +33,8 @@ jobs:
       run: sleep 60
 
     - name: Test code with pytest
-      run:
-          pytest tests/test_app
+      run: |
+       python -m pytest tests/test_app.py
           
     - name: Shutdown Docker Compose
       if: always()
