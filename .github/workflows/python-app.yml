@@ -28,10 +28,6 @@ jobs:
     - name: Start services with Docker Compose
       run: docker-compose up -d
 
-    - name: Wait for healthchecks
-      run: 
-         timeout 60s sh -c 'until docker ps | grep mysql | grep -q healthy; do echo "Waiting for container to be healthy..."; sleep 2; done'
-
     - name: Test code with pytest
       run:
           pytest tests/test_app
