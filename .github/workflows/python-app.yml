@@ -9,6 +9,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Debug Information
+        run: |
+          ls -al  # List files in the working directory
+          pwd      # Print the current working directory
+          env      # Print environment variables
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
