@@ -23,10 +23,14 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-         pip install -r app/requirements.txt 
-
+        pip install -r app/requirements.txt 
+        pip install pytest  
+        
     - name: Start services with Docker Compose
       run: docker-compose up -d
+
+    - name: Pause for 60 seconds
+      run: sleep 60
 
     - name: Test code with pytest
       run:
