@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, Blueprint
-from app.app import YourForm
-from app.models import Card
+from app.models import Card, YourForm
 from . import db
 
 main = Blueprint('main', __name__)
@@ -26,14 +25,3 @@ def index():
         return render_template('error.html', firstName=firstName)
 
     return render_template('BCard.html', form=your_form, success_message='Form submitted successfully')
-
-
-# # Error page route
-# @main.route('/error_page/<string:firstName>')
-# def error_page(firstName):
-#     # Your error page logic here
-#     return render_template('error.html', firstName=firstName)
-
-# if __name__ == '__main__':
-#     db.create_all()  # Create tables before running the app
-#     main.run(debug=True)
