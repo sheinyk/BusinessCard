@@ -8,18 +8,11 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Debug Information
-        run: |
-          ls -al  # List files in the working directory
-          pwd      # Print the current working directory
-          env      # Print environment variables
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        path: .
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
-          cache: 'pip'
-
-      - name: Print Message
-        run: echo "Hello, GitHub Actions!"
+      
