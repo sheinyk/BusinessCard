@@ -2,40 +2,33 @@ name: CI
 
 on:
   push:
-    branches:
-      - main
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
-
-    services:
-      mysql:
-        image: mysql:latest
-        env:
-          MYSQL_ROOT_PASSWORD: 6yamim1967
-          MYSQL_DATABASE: dbcard
-          MYSQL_USER: root
-          MYSQL_PASSWORD: 6yamim1967
-        ports:
-          - 3306:3306
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
-
-      flask_app:
-        image: flask_app
-        ports:
-          - 5000:5000
-        env:
-          FLASK_ENV: testing
-          SQLALCHEMY_DATABASE_URI: mysql://root:6yamim1967@mysql/dbcard
-      # Add other environment variables for your Flask application as needed
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
-      - name: Build Docker image
-        run: docker build -t mysql .
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+          cache: 'pip'
 
-      - name: Run tests in MySQL container
-        run: docker run --rm -e FLASK_ENV=testing -e SQLALCHEMY_DATABASE_URI=mysql+pymysql://your_mysql_user:6yamim1967@mysql:3306/dbcard mysql pytest
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt 
+      - name: Start services with Docker Compose
+        run: docker-compose up -d
+
+      - name: Wait for healthchecks
+        run: timeout 60s
+
+      - name: Test code with pytest
+        run:
+          pytest tests/test_app
+
+      - name: Shutdown Docker Compose
+        if: always()
+        run: docker-compose down
