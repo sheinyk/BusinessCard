@@ -1,6 +1,6 @@
 FROM python
 
-WORKDIR /BusinessCard2
+WORKDIR /BusinessCard
 
 COPY . .
 
