@@ -1,9 +1,9 @@
 version: '3'
 services:
   app:
-    image: flask_app
+    image: flask_app:flask_app
     container_name: flask_app
-    restart: unless-stopped
+    restart: unless-stoppe
     build:
       context: .
       dockerfile: app/Dockerfile
@@ -15,7 +15,7 @@ services:
     ports:
       - "5000:5000"
   mysql:
-    image: mysql:latest
+    image: mysql:mysql
     container_name: mysql
     restart: unless-stopped
     build: ./db/
