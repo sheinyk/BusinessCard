@@ -39,4 +39,8 @@ jobs:
     - name: Shutdown Docker Compose
       if: always()
       run: docker-compose down
+
+    - name: Analysing the code with pylint
+      run: 
+        pylint $GITHUB_WORKSPACE/app/*.py
       
